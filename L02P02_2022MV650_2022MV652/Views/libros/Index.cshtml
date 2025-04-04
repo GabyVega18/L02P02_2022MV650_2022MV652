@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+*@
+@{
+}
+<h1>libros</h1>
+<form>
+    <div class="form-group row mb-4">
+        <div class="col-sm-2">
+            <label>Nombre</label>
+        </div>
+        <div class="col-sm-4">
+            @Html.TextBox("nombre", "", new { @class = "form-control" })
+        </div>
+
+        <div class="col-sm-2">
+            @Html.Label("lblDescripcion", "Descripción")
+        </div>
+        <div class="col-sm-4">
+            @Html.TextArea("descripcion", "", new { @class = "form-control", @placeholder = "Ingrese la descripción" })
+        </div>
+
+        <div class="col-sm-2">
+            @Html.Label("lblUrlImagen", "URL Imagen")
+        </div>
+        <div class="col-sm-4">
+            @Html.TextBox("url_imagen", "", new { @class = "form-control", @placeholder = "Ingrese la URL de la imagen" })
+        </div>
+
+        <div class="col-sm-2">
+            @Html.Label("lblIdAutor", "Autor")
+        </div>
+        <div class="col-sm-4">
+            @Html.TextBox("id_autor", "", new { @class = "form-control", @placeholder = "Ingrese el ID del autor" })
+        </div>
+
+        <div class="col-sm-2">
+            @Html.Label("lblIdCategoria", "Categoría")
+        </div>
+        <div class="col-sm-4">
+            @Html.TextBox("id_categoria", "", new { @class = "form-control", @placeholder = "Ingrese el ID de la categoría" })
+        </div>
+
+        <div class="col-sm-2">
+            @Html.Label("lblPrecio", "Precio")
+        </div>
+        <div class="col-sm-4">
+            @Html.TextBox("precio", "", new { @class = "form-control", @placeholder = "Ingrese el precio" })
+        </div>
+
+        <div class="col-sm-2">
+            @Html.Label("lblEstado", "Estado")
+        </div>
+        <div class="col-sm-4">
+            @Html.TextBox("estado", "", new { @class = "form-control", @placeholder = "Ingrese el estado (A/I)" })
+        </div>
+    </div>
+
+</form>
