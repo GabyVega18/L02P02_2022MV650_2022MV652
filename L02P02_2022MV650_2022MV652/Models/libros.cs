@@ -1,4 +1,7 @@
-﻿namespace L02P02_2022VF650_2022MV652.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+
+namespace L02P02_2022VF650_2022MV652.Models
 {
     public class libros
     {
@@ -8,7 +11,7 @@
         public string url_imagen { get; set; }
         public int id_autor { get; set; }
         public int id_categoria { get; set; }
-        public double precio { get; set; }
+        public decimal precio { get; set; }
         public string estado { get; set; }
     }
 }
