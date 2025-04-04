@@ -3,31 +3,27 @@
 *@
 @{
 }
-@model List<L02P02_2022VF650_2022MV652.Models.libros>
 
 
-<h2>Listado General de Libros</h2>
+@model IEnumerable<libros> <!-- Este es el modelo que recibimos con la lista de libros -->
 
-<table class="table table-striped">
+<h2>Libros del Autor</h2>
+
+<table class="table">
     <thead>
         <tr>
-            <th>Nombre</th>
-            <th>Autor (ID)</th>
-            <th>Precio</th>
-            <th>Estado</th>
-            <th>Acciones</th>
+            <th>Título</th>
+            <th>Acción</th> <!-- Columna para acciones adicionales -->
         </tr>
     </thead>
     <tbody>
         @foreach (var libro in Model)
         {
             <tr>
-                <td>@libro.nombre</td>
-                <td>@libro.id_autor</td>
-                <td>$@libro.precio</td>
-                <td>@libro.estado</td>
+                <td>@libro.titulo</td> <!-- Título del libro -->
                 <td>
-                    <a asp-action="Detalle" asp-route-id="@libro.id" class="btn btn-info btn-sm">Ver comentario</a>
+                    <!-- Aquí puedes agregar más botones o acciones si lo deseas -->
+                    <button class="btn btn-info">Ver Detalles</button> <!-- Botón para detalles del libro -->
                 </td>
             </tr>
         }

@@ -3,104 +3,29 @@
 *@
 @{
 }
-<style>
-    .container {
-        width: 100%;
-        margin: 100px auto;
-    }
 
-    .text-msg {
-        margin: 20px 0;
-        display: block;
-        clear: both;
-        text-align: justify;
-    }
-
-    .progressbar {
-        margin: 0;
-        padding: 0;
-        counter-reset: step;
-        clear: both;
-    }
-
-        .progressbar li {
-            list-style-type: none;
-            width: 25%;
-            float: left;
-            font-size: 12px;
-            position: relative;
-            text-align: center;
-            text-transform: uppercase;
-            color: #7d7d7d;
-        }
-
-            .progressbar li:before {
-                width: 30px;
-                height: 30px;
-                content: counter(step);
-                counter-increment: step;
-                line-height: 30px;
-                border: 2px solid #7d7d7d;
-                display: block;
-                text-align: center;
-                margin: 0 auto 10px auto;
-                border-radius: 50%;
-                background-color: white;
+<div class="form">
+    <div class="nombre">
+        <label>Autores</label>
+    </div>
+   <table class="table">
+       <thead>
+           <tr>
+               <th>autor </th>
+           </tr>
+       </thead>
+       <tbody>
+           @foreach (var autores in (IEnumerable<dynamic>)ViewData["ListaDeAutor"])
+            {
+                <tr>
+                    <td>@autores.autor</td>
+                    <td>
+                        <!-- Aquí, en lugar de un formulario, agregamos un enlace que redirige a la vista de libros -->
+                        <a href="@Url.Action("LibrosPorAutor", "Libro", new { autorId = autores.id })" class="btn btn-primary">Seleccionar</a>
+                    </td> <!-- Botón de Seleccionar -->
+                </tr>
             }
-
-            .progressbar li:after {
-                width: 100%;
-                height: 2px;
-                content: "";
-                position: absolute;
-                background-color: #7d7d7d;
-                top: 15px;
-                left: -50%;
-                z-index: -1;
-            }
-
-            .progressbar li:first-child:after {
-                content: none;
-            }
-
-            .progressbar li.active {
-                color: green;
-                font-weight: bold;
-                font-style: italic;
-                text-decoration: underline;
-            }
-
-                .progressbar li.active:before {
-                    border-color: #55b776;
-                }
-
-                .progressbar li.active + li:after {
-                    background-color: #55b776;
-                }
-
-</style>
+        </tbody>
+   </table>
 
 
-@model List<L02P02_2022VF650_2022MV652.Models.autores>
-
-<h2>Listado de Autores</h2>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Autor</th>
-            <th>Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var autor in Model)
-        {
-            <tr>
-                <td>@autor.autor</td>
-                <td>
-                    <a asp-action="LibrosPorAutor" asp-route-id="@autor.id" class="btn btn-primary">Seleccionar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>

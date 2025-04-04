@@ -6,29 +6,27 @@ namespace L02P02_2022MV650_2022MV652.Controllers
 {
     public class librosController : Controller
     {
+        private readonly libreriaDbContext _context;
+
+        public librosController(libreriaDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
+
             return View();
         }
-
-    
-        // Simulación de datos (usa la misma lista que en autoresController)
-        private static List<libros> listaLibros = new List<libros>
+        public IActionResult LibrosPorAutor(int autorId)
         {
-            new libros { id = 1, nombre = "Cien años de soledad", id_autor = 1, descripcion = "Obra maestra", url_imagen = "", id_categoria = 1, precio = 15.50, estado = "Disponible" },
-            new libros { id = 2, nombre = "El amor en los tiempos del cólera", id_autor = 1, descripcion = "Otra joya", url_imagen = "", id_categoria = 1, precio = 13.00, estado = "Disponible" },
-            new libros { id = 3, nombre = "La casa de los espíritus", id_autor = 2, descripcion = "Realismo mágico", url_imagen = "", id_categoria = 1, precio = 12.75, estado = "Agotado" }
-        };
+            // Obtener los libros del autor seleccionado
+            var libros = _context.libros.Where(l => l.id_autor == autorId).ToList();
 
-        public IActionResult Detalle(int id)
-        {
-            var libro = listaLibros.FirstOrDefault(l => l.id == id);
-            if (libro == null)
-            {
-                return NotFound();
-            }
-            return View(libro);
-
+            // Pasar la lista de libros a la vista
+            return View(libros); // Redirigir a la vista 'LibrosPorAutor'
         }
+
+
+
     }
 }
