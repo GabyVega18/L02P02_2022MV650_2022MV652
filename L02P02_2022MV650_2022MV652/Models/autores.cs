@@ -2,5 +2,7 @@
 {
     public class autores
     {
+        public int id { get; set; }
+        public string autor { get; set; }
     }
 }

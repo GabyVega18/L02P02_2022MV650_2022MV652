@@ -2,5 +2,9 @@
 {
     public class pedido_encabezado
     {
+        public int id { get; set; }
+        public int id_cliente { get; set; }
+        public int cantidad_libros { get; set; }
+        public double total { get; set; }
     }
 }

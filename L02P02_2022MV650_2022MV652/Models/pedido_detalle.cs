@@ -2,5 +2,9 @@
 {
     public class pedido_detalle
     {
+        public int id { get; set; }
+        public int id_pedido { get; set; }
+        public int id_libro { get; set; }
+
     }
 }

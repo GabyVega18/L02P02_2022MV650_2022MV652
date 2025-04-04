@@ -2,5 +2,7 @@
 {
     public class categorias
     {
+        public int id { get; set; }
+        public string categoria  { get; set; }
     }
 }
