@@ -1,0 +1,25 @@
+﻿@model IEnumerable<L02P02_2022VF650_2022MV652.Models.libros>
+
+<h2>Libros del Autor</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var libro in Model)
+        {
+            <tr>
+                <td>@libro.nombre</td> <!-- Título del libro -->
+                <td>@libro.descripcion</td> <!-- Descripción del libro -->
+                <td>
+                    <button class="btn btn-info">Ver Detalles</button> <!-- Botón para ver detalles -->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

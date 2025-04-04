@@ -1,35 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model List<L02P02_2022VF650_2022MV652.Models.comentarios_libros>
+﻿@model List<L02P02_2022VF650_2022MV652.Models.comentarios_libros>
 
-<h2>Comentarios del Libro (ID: @ViewBag.IdLibro)</h2>
+<h2>Comentarios del Libro</h2>
 
-@if (Model.Count == 0)
+@if (Model.Count > 0)
 {
-    <div class="alert alert-info">Este libro aún no tiene comentarios.</div>
+    <ul>
+        @foreach (var comentario in Model)
+        {
+            <li><strong>@comentario.usuario</strong>: @comentario.comentarios</li>
+        }
+    </ul>
 }
 else
 {
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Usuario</th>
-                <th>Comentario</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var comentario in Model)
-            {
-                <tr>
-                    <td>@comentario.usuario</td>
-                    <td>@comentario.comentarios</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <p>No hay comentarios para este libro.</p>
 }
 
-<a asp-controller="libros" asp-action="Index" class="btn btn-secondary">Volver al listado de libros</a>
+<!-- Formulario para agregar un comentario -->
+<h3>Agregar Comentario</h3>
+<form method="post" action="@Url.Action("GuardarComentario", "comentarios_libros")">
+    <div class="form-group">
+        <label for="comentario">Comentario</label>
+        <textarea class="form-control" id="comentario" name="comentario" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="usuario">Usuario</label>
+        <input class="form-control" type="text" id="usuario" name="usuario" required />
+    </div>
+
+    <input type="hidden" name="id_libro" value="@ViewBag.IdLibro" />
+
+    <button type="submit" class="btn btn-primary">Guardar Comentario</button>
+</form>

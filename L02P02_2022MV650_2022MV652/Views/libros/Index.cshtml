@@ -1,11 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-
-@model IEnumerable<libros> <!-- Este es el modelo que recibimos con la lista de libros -->
+﻿@model List<L02P02_2022VF650_2022MV652.Models.libros>
 
 <h2>Libros del Autor</h2>
 
@@ -13,20 +6,18 @@
     <thead>
         <tr>
             <th>Título</th>
-            <th>Acción</th> <!-- Columna para acciones adicionales -->
+            <th>Acción</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var libro in Model)
         {
-            <tr>
-                <td>@libro.titulo</td> <!-- Título del libro -->
-                <td>
-                    <!-- Aquí puedes agregar más botones o acciones si lo deseas -->
-                    <button class="btn btn-info">Ver Detalles</button> <!-- Botón para detalles del libro -->
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+            <div class="book">
+                <h3>@libro.nombre</h3>
+                <p>@libro.descripcion</p>
+                <p><strong>Precio:</strong> @libro.precio</p>
 
+                <!-- Botón de Ver Detalles -->
+                <a href="@Url.Action("Index", "comentarios_libros", new { id = libro.id })" class="btn btn-primary">Ver Detalles</a>
+            </div>
+        }
