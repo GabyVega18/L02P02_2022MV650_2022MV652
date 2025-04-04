@@ -1,5 +1,6 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+<<<<<<< HEAD
 
 *@
 @{
@@ -58,3 +59,37 @@
     </div>
 
 </form>
+=======
+*@
+@{
+}
+@model List<L02P02_2022VF650_2022MV652.Models.libros>
+
+<h2>Listado General de Libros</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Autor (ID)</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var libro in Model)
+        {
+            <tr>
+                <td>@libro.nombre</td>
+                <td>@libro.id_autor</td>
+                <td>$@libro.precio</td>
+                <td>@libro.estado</td>
+                <td>
+                    <a asp-action="Detalle" asp-route-id="@libro.id" class="btn btn-info btn-sm">Ver comentario</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+>>>>>>> d35e900e30a0e0e307453f4e21d623a390c258d8

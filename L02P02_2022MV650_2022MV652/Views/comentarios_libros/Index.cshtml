@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<L02P02_2022VF650_2022MV652.Models.comentarios_libros>
+
+<h2>Comentarios del Libro (ID: @ViewBag.IdLibro)</h2>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info">Este libro aún no tiene comentarios.</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Comentario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var comentario in Model)
+            {
+                <tr>
+                    <td>@comentario.usuario</td>
+                    <td>@comentario.comentarios</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-controller="libros" asp-action="Index" class="btn btn-secondary">Volver al listado de libros</a>
